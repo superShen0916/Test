@@ -17,32 +17,26 @@ import java.util.List;
 public class Test {
 
     public static void main(String[] args) {
-
         List<String> list = new ArrayList<String>();
         for (int i = 0; i < 11; i++) {
             list.add(String.valueOf(i));
         }
 
         try {
+            System.out.println(System.getProperty("java.class.path"));
             Field f = list.getClass().getDeclaredField("elementData");
+            System.out.println(list.getClass().getName());
+            System.out.println(list.getClass().getSimpleName());
+            System.out.println(list.getClass().getClassLoader());
+            System.out.println(list.getClass().getTypeName());
             f.setAccessible(true);
             Object[] objects = (Object[]) f.get(list);
             System.out.println(objects.length);
-        } catch (NoSuchFieldException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } catch (SecurityException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } catch (IllegalArgumentException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            // TODO Auto-generated catch block
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
         System.out.println(list.getClass());
-        System.out.println(3 >> 1);
+        System.out.println(3 >>> 2);
     }
 }

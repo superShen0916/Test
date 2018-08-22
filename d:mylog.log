@@ -1059,3 +1059,5 @@ INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - SENT: 231
 INFO NioProcessor-2 NIOTalkTest.MsgHanler - --------msg sent--------
 INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - RECEIVED: HeapBuffer[pos=0 lim=4 cap=2048: 32 33 31 0A]
 INFO NioProcessor-2 org.apache.mina.filter.logging.LoggingFilter - CLOSED
+INFO main test.Test - ss
+INFO main test.Test - ss

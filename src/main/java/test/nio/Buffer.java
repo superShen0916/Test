@@ -2,6 +2,12 @@ package test.nio;
 
 import java.nio.ByteBuffer;
 
+/**
+ * 
+ *
+ * @date 2018-08-20
+ * @author shenpeng
+ */
 public class Buffer {
 
     public static void main(String[] args) {
