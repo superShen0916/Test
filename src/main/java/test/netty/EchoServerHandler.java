@@ -3,10 +3,12 @@ package test.netty;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelFutureListener;
+import io.netty.channel.ChannelHandler.Sharable;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 import io.netty.util.CharsetUtil;
 
+@Sharable //标志一个ChannelHandler可以被多个Channel安全的共享 todo
 public class EchoServerHandler extends ChannelInboundHandlerAdapter {
 
     @Override

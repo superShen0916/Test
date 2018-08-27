@@ -1,6 +1,11 @@
 package test;
 
-public interface A {
+public abstract class A {
 
-    void say();
+    public A() {
+        // TODO Auto-generated constructor stub
+    }
+
+    abstract void say(String s);
+
 }

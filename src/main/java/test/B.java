@@ -1,10 +1,11 @@
 package test;
 
-public class B implements A {
+public abstract class B extends A {
 
+    //    @Override
+    //    public void say() {
+    //        System.out.println("b");
+    //    }
     @Override
-    public void say() {
-        System.out.println("b");
-    }
-
+    abstract void say(String s);
 }

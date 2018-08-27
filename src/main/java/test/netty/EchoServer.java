@@ -41,7 +41,7 @@ public class EchoServer {
                     });
 
             ChannelFuture channelFuture = bootstrap.bind().sync();
-            System.out.println(EchoServer.class.getName() + "started and listen on"
+            System.out.println(EchoServer.class.getName() + " started and listen on"
                     + channelFuture.channel().localAddress() + " ===remoteAddress:"
                     + channelFuture.channel().remoteAddress());
             channelFuture.channel().closeFuture().sync();
