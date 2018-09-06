@@ -1,11 +1,7 @@
 package test;
 
-public abstract class B extends A {
+public class B {
 
-    //    @Override
-    //    public void say() {
-    //        System.out.println("b");
-    //    }
-    @Override
-    abstract void say(String s);
+    A a = new C("c");
+
 }

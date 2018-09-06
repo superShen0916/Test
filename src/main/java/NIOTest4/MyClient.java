@@ -41,7 +41,6 @@ public class MyClient {
     }
 
     public MyClient() {
-        // TODO Auto-generated constructor stub
     }
 
     public static void main(String[] args) throws Exception {
@@ -93,6 +92,7 @@ public class MyClient {
 
     private static class KeepAliveMessageFactoryImpl implements KeepAliveMessageFactory {
 
+        @Override
         public boolean isRequest(IoSession ioSession, Object message) {
 
             // System.out.println("客户端判断消息是否为请求包消息: " + message);
@@ -103,6 +103,7 @@ public class MyClient {
             return false;
         }
 
+        @Override
         public boolean isResponse(IoSession session, Object message) {
             // System.out.println("客户端判断响应心跳包信息: " + message);
             // MyMessage gm = (MyMessage) message;
@@ -116,6 +117,7 @@ public class MyClient {
             return true;
         }
 
+        @Override
         public Object getRequest(IoSession session) {
             System.out.println("服务端发送给客户端的心跳包消息: " + HEARTBEATREQUEST);
             // session.write(HEARTBEATREQUEST);
@@ -123,6 +125,7 @@ public class MyClient {
             // return null;
         }
 
+        @Override
         public Object getResponse(IoSession session, Object request) {
             // System.out.println("响应预设信息: " + HEARTBEATRESPONSE);
             return HEARTBEATRESPONSE;

@@ -2,10 +2,14 @@ package test;
 
 public abstract class A {
 
-    public A() {
-        // TODO Auto-generated constructor stub
-    }
+    //    String id;
+    //
+    //    public A(String id) {
+    //        this.id = id;
+    //    }
 
     abstract void say(String s);
+
+    abstract void say2();
 
 }
