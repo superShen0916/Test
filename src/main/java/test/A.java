@@ -13,3 +13,6 @@ public abstract class A {
     abstract void say2();
 
 }
+
+
+

@@ -20,6 +20,10 @@ public class TestAnnotation {
         return TestAnnotation.class.getSimpleName();
     }
 
+    /**
+     * @author shenpeng
+     * @param args
+     */
     public static void main(String[] args) {
         StringBuffer sBuffer = new StringBuffer();
         Class<?> cls = TestAnnotation.class;

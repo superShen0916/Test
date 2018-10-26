@@ -1,5 +1,6 @@
 package test.lock;
 
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.ReentrantLock;
 
 public class ReentrantLockTest {
@@ -18,11 +19,12 @@ public class ReentrantLockTest {
     static private Runnable createTask() {
         return new Runnable() {
 
+            @Override
             public void run() {
                 while (true) {
                     try {
-                        //                        if (lock.tryLock(2000, TimeUnit.MILLISECONDS)) {
-                        if (lock.tryLock()) {
+                        if (lock.tryLock(2000, TimeUnit.MILLISECONDS)) {
+                            //if (lock.tryLock()) {
                             //lock.lock();
                             try {
                                 System.out.println("lock " + Thread.currentThread().getName());

@@ -10,13 +10,11 @@ public class C extends A {
 
     @Override
     void say(String s) {
-        // TODO Auto-generated method stub
 
     }
 
     @Override
     void say2() {
-        // TODO Auto-generated method stub
 
     }
 }
