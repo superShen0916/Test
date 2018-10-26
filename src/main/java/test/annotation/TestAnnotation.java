@@ -6,6 +6,13 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.util.Arrays;
 
+/**
+ * @Description:
+ * @Param:
+ * @return:
+ * @Author: shenpeng
+ * @Date: 2018/10/26
+ */
 @ClassInfo("test class")
 public class TestAnnotation {
 
@@ -19,6 +26,7 @@ public class TestAnnotation {
     private static String getMethodInfo() {
         return TestAnnotation.class.getSimpleName();
     }
+
 
     /**
      * @author shenpeng
