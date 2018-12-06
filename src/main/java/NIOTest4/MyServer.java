@@ -11,7 +11,6 @@ import org.apache.mina.filter.keepalive.KeepAliveFilter;
 import org.apache.mina.filter.keepalive.KeepAliveMessageFactory;
 import org.apache.mina.filter.keepalive.KeepAliveRequestTimeoutHandler;
 import org.apache.mina.filter.logging.LoggingFilter;
-import org.apache.mina.filter.ssl.SslFilter;
 import org.apache.mina.transport.socket.nio.NioSocketAcceptor;
 
 public class MyServer {
@@ -28,16 +27,17 @@ public class MyServer {
 
     public static void main(String[] args) {
         IoAcceptor accepter = new NioSocketAcceptor();
-
+        //        IoAcceptor accepter = new NioDatagramAcceptor();
         accepter.setHandler(new MyServerHandler());
-        accepter.getFilterChain().addLast("sslFilter",
-                new SslFilter(new SSLContextGenerator().getSslContext()));
+        //accepter.getFilterChain().addLast("sslFilter",
+        //       new SslFilter(new SSLContextGenerator().getSslContext()))
 
         ProtocolCodecFilter coderFilter =
                 // 使用自定义的编码解码filter
                 new ProtocolCodecFilter(new MyCodeFactory());
         // accepter.getFilterChain().addLast("compression", new
-        // CompressionFilter());
+        // CompressionFilt
+        // er());
         accepter.getFilterChain().addLast("codec", coderFilter);
 
         accepter.getFilterChain().addLast("logger", new LoggingFilter());

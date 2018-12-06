@@ -4,15 +4,12 @@ import java.net.InetSocketAddress;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.net.ssl.SSLContext;
-
 import org.apache.mina.core.future.ConnectFuture;
 import org.apache.mina.core.session.IdleStatus;
 import org.apache.mina.core.session.IoSession;
 import org.apache.mina.filter.codec.ProtocolCodecFilter;
 import org.apache.mina.filter.keepalive.KeepAliveFilter;
 import org.apache.mina.filter.keepalive.KeepAliveMessageFactory;
-import org.apache.mina.filter.ssl.SslFilter;
 import org.apache.mina.transport.socket.nio.NioSocketConnector;
 
 import net.sf.json.JSONObject;
@@ -42,14 +39,21 @@ public class MyClient {
     public MyClient() {
     }
 
+    public static NioSocketConnector connector;
     public static void main(String[] args) throws Exception {
-        NioSocketConnector connector = new NioSocketConnector();
+        //        String udpMsg = "udp msg";
+        //        DatagramSocket datagramSocket = new DatagramSocket();
+        //        datagramSocket.connect(new InetSocketAddress("localhost", 8487));
+        //        datagramSocket.send(new DatagramPacket(udpMsg.getBytes(), udpMsg.getBytes().length));
+
+        connector = new NioSocketConnector();
+        //NioDatagramConnector connector = new NioDatagramConnector();
         // connector.setConnectTimeoutMillis(20000);
 
-        SSLContext sslContext = new SSLContextGenerator().getSslContext();
-        SslFilter sslFilter = new SslFilter(sslContext);
-        sslFilter.setUseClientMode(true);
-        connector.getFilterChain().addFirst("sslFilter", sslFilter);
+        //SSLContext sslContext = new SSLContextGenerator().getSslContext();
+        //SslFilter sslFilter = new SslFilter(sslContext);
+        // sslFilter.setUseClientMode(true);
+        // connector.getFilterChain().addFirst("sslFilter", sslFilter);
         connector.getFilterChain().addLast("codes", new ProtocolCodecFilter(new MyCodeFactory()));
         connector.setHandler(new MyClientHandler());
 
@@ -68,6 +72,7 @@ public class MyClient {
         connector.getFilterChain().addLast("heartbeat", heartBeat);
         // 心跳检测结束
 
+
         ConnectFuture future = connector.connect(new InetSocketAddress("localhost", 8487));
         future.awaitUninterruptibly();
         IoSession session = null;
@@ -85,7 +90,7 @@ public class MyClient {
         gm.setContents(JSONObject.fromObject(map).toString().getBytes());
         session.write(gm);
 
-        // connector.dispose();
+        connector.dispose();
 
     }
 
@@ -120,6 +125,7 @@ public class MyClient {
         public Object getRequest(IoSession session) {
             System.out.println("服务端发送给客户端的心跳包消息: " + HEARTBEATREQUEST);
             // session.write(HEARTBEATREQUEST);
+            connector.dispose();
             return HEARTBEATREQUEST;
             // return null;
         }

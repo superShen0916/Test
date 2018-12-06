@@ -106,8 +106,18 @@
     <artifactId>netty-all</artifactId>
     <version>4.1.28.Final</version>
 </dependency>
-
-
+      <dependency>
+          <groupId>com.google.guava</groupId>
+          <artifactId>guava</artifactId>
+          <version>19.0</version>
+          <scope>compile</scope>
+      </dependency>
+      <dependency>
+          <groupId>com.google.guava</groupId>
+          <artifactId>guava</artifactId>
+          <version>19.0</version>
+          <scope>compile</scope>
+      </dependency>
 
 
   </dependencies>
@@ -135,9 +145,21 @@
     <artifactId>exec-maven-plugin</artifactId>
     <version>1.6.0</version>
  </plugin>
- 
-  </plugins> </build> 
-  
+
+   </plugins>
+  </build>
+    <profiles>
+        <profile>
+            <id>ChatServer</id>
+            <properties>
+                <port>
+                    9999
+                </port>
+            </properties>
+
+        </profile>
+
+    </profiles>
  
 
 </project>
