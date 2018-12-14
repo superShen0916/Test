@@ -2,10 +2,7 @@ package test.readlog;
 
 import static java.util.regex.Pattern.compile;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileReader;
-import java.io.FileWriter;
+import java.io.*;
 import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
@@ -22,69 +19,77 @@ import com.google.common.collect.Maps;
  */
 public class ReadTestcbLog {
 
-    public static String filePath1 = "/Users/playcrab/Desktop/client_kos_testcb_2018-11-29.log";
+    public static String filePath1 = "/Users/playcrab/Desktop/log/client_kos_testcb_2018-11-29.log";
 
-    public static String filePath2 = "/Users/playcrab/Desktop/testcb.log";
+    public static String filePath2 = "/Users/playcrab/Desktop/log/test/bufferReader.log";
 
     public static void main(String[] args) {
+        long time1 = System.currentTimeMillis();
         String str = null;
-        String lastRefreshTime;
+
         FileReader fileReader = null;
         FileWriter fileWriter = null;
+        FileInputStream in = null;
         try {
-            fileReader = new FileReader(filePath1);
+            in = new FileInputStream(filePath1);
+            // fileReader = new FileReader(filePath1);
             fileWriter = new FileWriter(filePath2);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        List<String> ridList = Lists.newArrayList();
-        Map<String, Integer> actionMap = Maps.newHashMap();
         BufferedReader br = null;
         BufferedWriter bw = null;
         int start1 = 0;
-        int count = 0;
         int index1 = 0;
-        int index2 = 0;
-        String action;
         String rid;
-        String ridAc;
-        int i = 0;
+        String devId;
+        Map<String, String> rid_devid = Maps.newHashMap();
+        Map<String, String> devid_rids = Maps.newHashMap();
+        List<String> devList = Lists.newArrayList();
+        List<String> errDev = Lists.newArrayList();
         try {
             br = new BufferedReader(fileReader);
             bw = new BufferedWriter(fileWriter);
             while ((str = br.readLine()) != null) {
-                i++;
-                if (str.contains(",\"rid\":\"")) {
-                    index1 = str.indexOf("\"action\":\"") + 10;
-                    if (index1 == -1) {
-                        System.out.println("action not found \n" + str);
-                        continue;
+                start1 = str.indexOf("\"rid\":\"") + 7;
+                index1 = str.indexOf("\"device_id\":\"");
+
+                if (start1 != 6 && index1 != -1) {
+                    rid = str.substring(start1, start1 + 16);
+                    devId = str.substring(index1 + 13, index1 + 28);
+                    if (!rid_devid.containsKey(rid)) {
+                        rid_devid.put(rid, devId);
                     }
-                    index2 = str.indexOf("\"", index1);
-                    action = str.substring(index1, index2);
-                    start1 = str.indexOf(",\"rid\":\"") + 8;
-                    if (start1 >= str.length() - 3) {
-                        System.out.println(i + " rid is null \n" + str);
-                        continue;
-                    }
-                    rid = str.substring(start1, str.length() - 3);
-                    ridAc = rid + action;
-                    if (ridList.contains(ridAc)) {
-                        continue;
-                    }
-                    ridList.add(ridAc);
-                    count = 1;
-                    if (actionMap.containsKey(action)) {
-                        count = actionMap.get(action) + 1;
-                    }
-                    actionMap.put(action, count);
                 }
             }
-            for (Map.Entry<String, Integer> entry : actionMap.entrySet()) {
-                bw.write(entry.getKey() + "   " + entry.getValue());
-            }
+            long time2 = System.currentTimeMillis();
+            System.out.println(time2 - time1);
 
-            System.out.println("finished");
+            for (String devid : rid_devid.values()) {
+                if (devList.contains(devid)) {
+                    errDev.add(devid);
+                } else {
+                    devList.add(devid);
+                }
+            }
+            for (Map.Entry<String, String> entry : rid_devid.entrySet()) {
+                if (errDev.contains(entry.getValue())) {
+                    if (devid_rids.containsKey(entry.getValue())) {
+                        devid_rids.put(entry.getValue(),
+                                devid_rids.get(entry.getValue()) + " " + entry.getKey());
+                    } else {
+                        devid_rids.put(entry.getValue(), entry.getKey());
+                    }
+                }
+            }
+            long time3 = System.currentTimeMillis();
+            System.out.println(time3 - time2);
+            for (Map.Entry<String, String> entry : devid_rids.entrySet()) {
+                bw.write(entry.getKey() + " :  " + entry.getValue() + "\n");
+                bw.flush();
+            }
+            long time4 = System.currentTimeMillis();
+            System.out.println(time4 - time3);
             bw.close();
             br.close();
         } catch (Exception e) {
