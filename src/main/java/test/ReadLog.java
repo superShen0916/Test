@@ -94,4 +94,5 @@ public class ReadLog {
         }
         return "1";
     }
+
 }

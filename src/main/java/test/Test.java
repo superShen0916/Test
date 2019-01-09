@@ -4,6 +4,9 @@
 
 package test;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * 
  *
@@ -19,16 +22,27 @@ public class Test {
         //        String request = Joiner.on("&").join(null, "1");
         //        System.out.println(request);
 
+        Map<String, String> map = new HashMap<>();
+        Map<String, String> map2 = new HashMap<>();
+        String s = new String("1");
+        String s2 = new String("1");
 
-        long t1 = System.currentTimeMillis();
-        sum();
-        long t2 = System.currentTimeMillis();
-        System.out.println(t2 - t1);
+        map.put(s, s);
+        map2.put(s2, s2);
 
-        long t3 = System.currentTimeMillis();
-        sum();
-        long t4 = System.currentTimeMillis();
-        System.out.println(t4 - t3);
+        System.out.println(map.equals(map2));
+
+        // System.out.println(11 + 'a');//11+97=108
+
+        //        long t1 = System.currentTimeMillis();
+        //        sum();
+        //        long t2 = System.currentTimeMillis();
+        //        System.out.println(t2 - t1);
+        //
+        //        long t3 = System.currentTimeMillis();
+        //        sum();
+        //        long t4 = System.currentTimeMillis();
+        //        System.out.println(t4 - t3);
     }
 
     /**
@@ -70,6 +84,7 @@ public class Test {
     //
     //        showKeyValue1(gInteger);
     //    }
+
 
     public static void showKeyValue1(Generic<?> obj) {
         System.out.println("泛型测试" + "key value is ");

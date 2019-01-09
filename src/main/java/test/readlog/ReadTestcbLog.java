@@ -2,7 +2,10 @@ package test.readlog;
 
 import static java.util.regex.Pattern.compile;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
@@ -12,7 +15,10 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 
 /**
- *
+ * 16564
+ * 3900
+ * 16
+ * 
  * @Description: testcb
  * @Author: shenpeng
  * @Date: 2018/12/5
@@ -23,16 +29,17 @@ public class ReadTestcbLog {
 
     public static String filePath2 = "/Users/playcrab/Desktop/log/test/bufferReader.log";
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
+        Thread.sleep(20000);
         long time1 = System.currentTimeMillis();
         String str = null;
 
         FileReader fileReader = null;
         FileWriter fileWriter = null;
-        FileInputStream in = null;
+        // FileInputStream in = null;
         try {
-            in = new FileInputStream(filePath1);
-            // fileReader = new FileReader(filePath1);
+            // in = new FileInputStream(filePath1);
+            fileReader = new FileReader(filePath1);
             fileWriter = new FileWriter(filePath2);
         } catch (Exception e) {
             e.printStackTrace();
@@ -61,9 +68,10 @@ public class ReadTestcbLog {
                         rid_devid.put(rid, devId);
                     }
                 }
+                Thread.sleep(10);
             }
             long time2 = System.currentTimeMillis();
-            System.out.println(time2 - time1);
+            System.out.println(time2 - time1); //16564
 
             for (String devid : rid_devid.values()) {
                 if (devList.contains(devid)) {
@@ -83,13 +91,13 @@ public class ReadTestcbLog {
                 }
             }
             long time3 = System.currentTimeMillis();
-            System.out.println(time3 - time2);
+            System.out.println(time3 - time2); //3900
             for (Map.Entry<String, String> entry : devid_rids.entrySet()) {
                 bw.write(entry.getKey() + " :  " + entry.getValue() + "\n");
                 bw.flush();
             }
             long time4 = System.currentTimeMillis();
-            System.out.println(time4 - time3);
+            System.out.println(time4 - time3); //16
             bw.close();
             br.close();
         } catch (Exception e) {
