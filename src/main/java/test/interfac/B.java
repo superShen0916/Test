@@ -10,10 +10,10 @@ package test.interfac;
  * @date 2018-05-04
  * @author shenpeng
  */
-public class B extends A implements D {
+public class B implements D {
 
     @Override
     public void print() {
-        System.out.println(a);
+        System.out.println("b");
     }
 }

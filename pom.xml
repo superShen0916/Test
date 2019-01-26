@@ -118,6 +118,18 @@
           <version>19.0</version>
           <scope>compile</scope>
       </dependency>
+      <dependency>
+          <groupId>OnePunch</groupId>
+          <artifactId>OnePunch</artifactId>
+          <version>0.0.1-SNAPSHOT</version>
+      </dependency>
+
+      <!-- https://mvnrepository.com/artifact/org.glassfish.common/btrace-jars -->
+      <dependency>
+          <groupId>org.glassfish.common</groupId>
+          <artifactId>btrace-jars</artifactId>
+          <version>3.2-b06</version>
+      </dependency>
 
 
   </dependencies>
@@ -129,8 +141,9 @@
  <version>3.5.1</version>
  <extensions>true</extensions> 
  </plugin>
- 
-      <plugin>
+
+
+       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
         <version>3.2</version>

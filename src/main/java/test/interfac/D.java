@@ -13,4 +13,5 @@ package test.interfac;
  */
 public interface D {
 
+    void print();
 }
