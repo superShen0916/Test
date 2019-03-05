@@ -12,7 +12,12 @@ public abstract class A {
 
     abstract void say2();
 
+    public void ss() {
+        say2();
+    }
+
 }
+
 
 
 

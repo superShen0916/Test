@@ -12,6 +12,7 @@ public class MapForeach {
         map.put("3", "3");
         map.put("4", "4");
         map.put("5", "5");
+
         map.forEach(System.out::printf);//PrintStream java.io.PrintStream.printf(String format, Object... args)  
         //printf接受两个参数，第一个作为String format 
 

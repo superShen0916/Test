@@ -11,6 +11,8 @@ import java.util.concurrent.*;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 
+import io.netty.util.concurrent.DefaultThreadFactory;
+
 /**
  * @Description: 第7天登陆的3464人1到7天的平均每天在线时长
  * @Author: shenpeng
@@ -31,7 +33,7 @@ public class OnlineTime5 {
 
         long t1 = System.currentTimeMillis();
         ExecutorService executorService = new ThreadPoolExecutor(1, 1, 0L, TimeUnit.SECONDS,
-                new LinkedBlockingQueue<>());
+                new LinkedBlockingQueue<>(), new DefaultThreadFactory("my-pool-name"));
 
         CountDownLatch latch = new CountDownLatch(7);
 

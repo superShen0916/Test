@@ -58,7 +58,7 @@ public class CompareClient {
 
         //list必须手动sort
         Collections.sort(list);
-        Collections.sort(list2);_
+        Collections.sort(list2);
         System.out.println(list);
         System.out.println(list2);
 

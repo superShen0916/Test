@@ -7,6 +7,9 @@ package test;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.playcrab.kos.gs.entities.player.Player;
+import com.playcrab.kos.gs.services.player.PlayerService;
+
 /**
  * 
  *
@@ -14,7 +17,11 @@ import java.util.Map;
  * @author shenpeng
  */
 public class Test {
+
     public static void main(String[] args) {
+
+        Player player = PlayerService.loadPlayerByUId(10033);
+
         Boolean a = false;
         Boolean b = new Boolean(false);
         System.out.println(a.equals(b));
@@ -30,8 +37,19 @@ public class Test {
         map.put(s, s);
         map2.put(s2, s2);
 
-        System.out.println(map.equals(map2));
+        // System.out.println(map.equals(map2));
 
+        for (int i = 0; i < 100; i++) {
+            try {
+                System.out.println(i);
+                Thread.sleep(1000);
+
+            } catch (InterruptedException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        }
+        System.out.println(0);
         // System.out.println(11 + 'a');//11+97=108
 
         //        long t1 = System.currentTimeMillis();
@@ -84,7 +102,6 @@ public class Test {
     //
     //        showKeyValue1(gInteger);
     //    }
-
 
     public static void showKeyValue1(Generic<?> obj) {
         System.out.println("泛型测试" + "key value is ");

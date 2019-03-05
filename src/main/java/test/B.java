@@ -2,6 +2,9 @@ package test;
 
 public class B {
 
-    A a = new C("c");
+    public static void main(String[] args) {
+        A a = new C("c");
+        a.ss();
+    }
 
 }

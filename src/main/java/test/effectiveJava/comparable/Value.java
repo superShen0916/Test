@@ -19,9 +19,9 @@ public class Value implements Comparable<Value> {
     @Override
     public int compareTo(Value value1) {
         if (value1.value > this.value) {
-            return -1;
-        } else {
             return 1;
+        } else {
+            return -1;
         }
     }
 

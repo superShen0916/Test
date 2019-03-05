@@ -15,7 +15,7 @@ public class D extends A {
 
     @Override
     void say2() {
-
+        System.out.println("d");
     }
 
     //    public static void main(String[] args) {
