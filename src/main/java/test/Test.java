@@ -7,9 +7,6 @@ package test;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.playcrab.kos.gs.entities.player.Player;
-import com.playcrab.kos.gs.services.player.PlayerService;
-
 /**
  * 
  *
@@ -20,7 +17,7 @@ public class Test {
 
     public static void main(String[] args) {
 
-        Player player = PlayerService.loadPlayerByUId(10033);
+        // Player player = PlayerService.loadPlayerByUId(10033);
 
         Boolean a = false;
         Boolean b = new Boolean(false);
