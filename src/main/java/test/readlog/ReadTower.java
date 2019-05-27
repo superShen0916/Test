@@ -175,7 +175,7 @@ public class ReadTower {
 //            //BufferedReader br2 = new BufferedReader(new FileReader(path2));
 //            BufferedWriter bw = new BufferedWriter(new FileWriter(path3));
 //
-//            int index0, index1,index2;
+//            int index0, index1, index2;
 //            long time0;
 //            Map<String, String> prRoom = Maps.newHashMap();//win
 //            Map<String, String> prlRoom = Maps.newHashMap();//lose
@@ -197,7 +197,7 @@ public class ReadTower {
 //                    if (index1 == -1) {
 //                        System.out.println(str);
 //                    }
-//                    index2=str.indexOf(",", index1+7);
+//                    index2 = str.indexOf(",", index1 + 7);
 //                    prRoom.put(rid, str.substring(index1 + 7, index2));
 //                    prlRoom.remove(rid);
 //                } else {
@@ -211,34 +211,34 @@ public class ReadTower {
 //            long t1 = System.currentTimeMillis() / 1000;
 //            System.out.println(t1 - t0);
 //
-////            while ((str = br2.readLine()) != null) {
-////                index0 = str.indexOf("lastRef");
-////                if (index0 == -1) {
-////                    continue;
-////                }
-////                time0 = Long.valueOf(str.substring(index0 + 17, index0 + 30));
-////                if (time0 > time2) {
-////                    break;
-////                }
-////                rid = str.substring(0, 5);
-////                if (str.contains("Win\":t") || str.contains("skipT")) {
-////                    index1 = str.indexOf("yBest");
-////                    if (index1 == -1) {
-////                        System.out.println(str);
-////                    }
-////                    prRoom.put(rid, str.substring(index1 + 7, index1 + 8));
-////                    if (str.substring(index1 + 7, index1 + 8) .equals("11")){
-////
-////                    }
-////                    prlRoom.remove(rid);
-////                } else {
-////                    index1 = str.indexOf("ockI");
-////                    if (index1 == -1) {
-////                        System.out.println(str);
-////                    }
-////                    prlRoom.put(rid, str.substring(index1 + 8, index1 + 15));
-////                }
-////            }
+//            //            while ((str = br2.readLine()) != null) {
+//            //                index0 = str.indexOf("lastRef");
+//            //                if (index0 == -1) {
+//            //                    continue;
+//            //                }
+//            //                time0 = Long.valueOf(str.substring(index0 + 17, index0 + 30));
+//            //                if (time0 > time2) {
+//            //                    break;
+//            //                }
+//            //                rid = str.substring(0, 5);
+//            //                if (str.contains("Win\":t") || str.contains("skipT")) {
+//            //                    index1 = str.indexOf("yBest");
+//            //                    if (index1 == -1) {
+//            //                        System.out.println(str);
+//            //                    }
+//            //                    prRoom.put(rid, str.substring(index1 + 7, index1 + 8));
+//            //                    if (str.substring(index1 + 7, index1 + 8) .equals("11")){
+//            //
+//            //                    }
+//            //                    prlRoom.remove(rid);
+//            //                } else {
+//            //                    index1 = str.indexOf("ockI");
+//            //                    if (index1 == -1) {
+//            //                        System.out.println(str);
+//            //                    }
+//            //                    prlRoom.put(rid, str.substring(index1 + 8, index1 + 15));
+//            //                }
+//            //            }
 //            long t2 = System.currentTimeMillis() / 1000;
 //            System.out.println(t2 - t1);
 //            for (String s : prRoom.values()) {
@@ -256,31 +256,29 @@ public class ReadTower {
 //                }
 //            }
 //
-//            for (int i=1;i<=list.size();i++){
-//                bw.write(list.get(i-1)+"        "+  removeAndGet(wRoomCount,String.valueOf(i) )+"     "+removeAndGet(lRoomCount, list.get(i-1))+"\n");
+//            for (int i = 1; i <= list.size(); i++) {
+//                bw.write(list.get(i - 1) + "        " + removeAndGet(wRoomCount, String.valueOf(i))
+//                        + "     " + removeAndGet(lRoomCount, list.get(i - 1)) + "\n");
 //                bw.flush();
 //            }
 //
+//            //
+//            //            for (Map.Entry<String, Integer> entry : wRoomCount.entrySet()) {
+//            // str = list.get(Integer.valueOf(entry.getKey()) - 1);
+//            //                    bw.write(str + "     " + entry.getValue()+"     "
+//            //                            + removeAndGet(lRoomCount, str)+ "\n");
+//            //                    bw.flush();
+//            //            }
+//            //            for (Map.Entry<String, Integer> entry : lRoomCount.entrySet()) {
+//            //                bw.write(entry.getKey() + "     " + 0+"     "
+//            //                    + entry.getValue()+ "\n");
+//            //                bw.flush();
+//            //            }
 //
-//
-////
-////            for (Map.Entry<String, Integer> entry : wRoomCount.entrySet()) {
-//// str = list.get(Integer.valueOf(entry.getKey()) - 1);
-////                    bw.write(str + "     " + entry.getValue()+"     "
-////                            + removeAndGet(lRoomCount, str)+ "\n");
-////                    bw.flush();
-////            }
-////            for (Map.Entry<String, Integer> entry : lRoomCount.entrySet()) {
-////                bw.write(entry.getKey() + "     " + 0+"     "
-////                    + entry.getValue()+ "\n");
-////                bw.flush();
-////            }
-//
-//
-////            for (Map.Entry<String, Integer> entry : lRoomCount.entrySet()) {
-////                bw.write(entry.getKey() + "  " + entry.getValue() + "\n");
-////                bw.flush();
-////            }
+//            //            for (Map.Entry<String, Integer> entry : lRoomCount.entrySet()) {
+//            //                bw.write(entry.getKey() + "  " + entry.getValue() + "\n");
+//            //                bw.flush();
+//            //            }
 //            System.out.println("done!!!");
 //            System.exit(0);
 //        } catch (Exception e) {
@@ -289,8 +287,8 @@ public class ReadTower {
 //        }
 //    }
 //
-//    private  static int removeAndGet(Map<String,Integer> map,String key){
-//        if (map.get(key)==null){
+//    private static int removeAndGet(Map<String, Integer> map, String key) {
+//        if (map.get(key) == null) {
 //            return 0;
 //        }
 //        return map.remove(key);

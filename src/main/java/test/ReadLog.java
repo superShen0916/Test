@@ -1,5 +1,9 @@
 package test;
 
+import java.util.Map;
+
+import com.google.common.collect.Maps;
+
 /**
  * @Description: 统计玩家每天战斗力变化
  * @Author: shenpeng
@@ -12,10 +16,20 @@ public class ReadLog {
     //    public static String filePath2 = "/Users/playcrab/Desktop/testcb.log";
 
     public static void main(String[] args) throws InterruptedException {
-        for (int i = 0; i < 1000; i++) {
-            Thread.sleep(1000);
-            System.out.println(i);
+        Map<String, Boolean> map = Maps.newLinkedHashMap();
+        map.put("1", true);
+        map.put("3", false);
+        map.put("2", true);
+        long n = map.values().stream().filter(a -> a == true).count();
+        System.out.println(n);
+        if (map.values().stream().filter(a -> a == true).count() > 0) {
+            System.out.println(111);
         }
+
+        //        for (int i = 0; i < 1000; i++) {
+        //            Thread.sleep(1000);
+        //            System.out.println(i);
+        //        }
         //        System.out.println(System.getProperties());
         //        long t1 = System.currentTimeMillis();
         //        String str = null;

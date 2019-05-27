@@ -27,7 +27,7 @@ public class MyClient {
     //
     // // chang3
     // // cahnge4
-    // =======
+    // =======3
     // // change2
     // >>>>>>> branch 'Dev' of git@39.104.58.77:penn/eclipseTest.git
 
@@ -40,6 +40,7 @@ public class MyClient {
     }
 
     public static NioSocketConnector connector;
+
     public static void main(String[] args) throws Exception {
         //        String udpMsg = "udp msg";
         //        DatagramSocket datagramSocket = new DatagramSocket();
@@ -72,7 +73,6 @@ public class MyClient {
         connector.getFilterChain().addLast("heartbeat", heartBeat);
         // 心跳检测结束
 
-
         ConnectFuture future = connector.connect(new InetSocketAddress("localhost", 8487));
         future.awaitUninterruptibly();
         IoSession session = null;
@@ -90,7 +90,7 @@ public class MyClient {
         gm.setContents(JSONObject.fromObject(map).toString().getBytes());
         session.write(gm);
 
-        connector.dispose();
+        // connector.dispose();
 
     }
 
@@ -125,7 +125,7 @@ public class MyClient {
         public Object getRequest(IoSession session) {
             System.out.println("服务端发送给客户端的心跳包消息: " + HEARTBEATREQUEST);
             // session.write(HEARTBEATREQUEST);
-            connector.dispose();
+            //    connector.dispose();
             return HEARTBEATREQUEST;
             // return null;
         }

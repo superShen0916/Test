@@ -1,13 +1,13 @@
 package NIOTest4;
 
-import java.io.Serializable;
-
-public class MyMessage implements Serializable {
+public class MyMessage {
 
     /****/
-    private static final long serialVersionUID = 5570201892267872279L;
+    // private static final long serialVersionUID = 5570201892267872279L;
+
     // private Date date;// 时间
     private int command;// 指令
+
     private byte[] contents;// 内容
 
     public int getCommand() {

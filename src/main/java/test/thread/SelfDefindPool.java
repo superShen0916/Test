@@ -55,12 +55,17 @@ public class SelfDefindPool {
          */
         //scheduledExecutorService.scheduleWithFixedDelay(task, 3, 4, TimeUnit.SECONDS);
         try {
-            scheduledExecutorService.scheduleWithFixedDelay(task, 1, 1, TimeUnit.SECONDS);
+        //    scheduledExecutorService.scheduleWithFixedDelay(task, 1, 1, TimeUnit.SECONDS);
 
         } catch (Exception e) {
             System.out.println(11);
         }
 
+//        Future future =  cachedThreadPool.submit(task);
+//        future.get();
+
+        ExecutorService threadPool = new TraceThreadPoolExecutor(2, 2, 1, TimeUnit.SECONDS,new LinkedBlockingDeque<>(),new NamedThreadFactory("myThreadPool"));
+        threadPool.submit(task);
     }
 
     static class Task implements Runnable {
@@ -78,8 +83,53 @@ public class SelfDefindPool {
 
             System.out.println("---");
             System.out.println(1 / 0);
+//            try {
+//            System.out.println(1 / 0);
+//            }catch (Exception e){
+//                System.out.println("error");
+//               // e.printStackTrace();
+//                throw e;
+//            }
             System.out.println(Thread.currentThread().getName());
 
         }
     }
+
+    static class TraceThreadPoolExecutor extends ThreadPoolExecutor{
+
+        public TraceThreadPoolExecutor(int corePoolSize, int maximumPoolSize, long keepAliveTime,
+                TimeUnit unit, BlockingQueue<Runnable> workQueue, ThreadFactory threadFactory) {
+            super(corePoolSize, maximumPoolSize, keepAliveTime, unit, workQueue, threadFactory);
+        }
+
+        @Override
+        public void execute(Runnable command) {
+            super.execute(wrap(command,clientTrace()));
+        }
+
+        @Override
+        public  Future<?> submit(Runnable task) {
+            return super.submit(wrap(task,clientTrace()));
+        }
+
+        private Exception clientTrace(){
+            return new Exception("Client stack trace");
+        }
+
+        private Runnable wrap(final Runnable task,final Exception clientStack){
+            return new Runnable() {
+
+                @Override
+                public void run() {
+                    try {
+                        task.run();
+                    }catch (Exception e){
+                        clientStack.printStackTrace();
+                        throw e;
+                    }
+                }
+            };
+        }
+    }
+
 }
