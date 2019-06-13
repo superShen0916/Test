@@ -125,5 +125,5 @@ public class Test {
 }
 
 class Generic<Number> {
-
+    //add 2
 }
