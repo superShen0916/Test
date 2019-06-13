@@ -1,3 +1,6 @@
+import com.playcrab.common.config.RuntimeCfg;
+import com.playcrab.common.dataconfig.DataConfigService;
+import com.playcrab.kos.common.dataconfig.NormalBlock;
 
 public class MyClient {
 
@@ -22,7 +25,11 @@ public class MyClient {
 
         System.out.println("user.dir : " + System.getProperty("user.dir"));
         try {
-            System.out.println(1 / 0);
+            //    System.out.println(1 / 0);
+
+            RuntimeCfg.instance = new RuntimeCfg();
+            System.out.println(DataConfigService.getDataConfigIdList(NormalBlock.class).toString());
+
         } catch (Exception e) {
             e.printStackTrace();
         }
