@@ -24,6 +24,20 @@ public class Test {
     //add 3
     public static void main(String[] args) {
 
+        int x = 268435460;
+        int y = 80 * x;
+        System.out.println(y);
+
+        int num = 19522579;
+        int price = 220;
+        int result = 0;
+        for (int i = 0; i < num; i++) {
+            result += price;
+        }
+        System.out.println(result);//输出84
+
+        System.exit(1);
+
         // Player player = PlayerService.loadPlayerByUId(10033);
         ImmutableList<String> immutableList = ImmutableList.of("a", "b");
         ImmutableList<String> immutableList2 = ImmutableList.<String> builder().add("1").add("2")
@@ -33,9 +47,9 @@ public class Test {
         System.out.println(immutableList.toString());
         System.out.println(immutableList2.toString());
 
-        Boolean a = false;
+        // Boolean a = false;
         Boolean b = new Boolean(false);
-        System.out.println(a.equals(b)); // true
+        // System.out.println(a.equals(b)); // true
 
         //        String request = Joiner.on("&").join(null, "1");
         //        System.out.println(request);
