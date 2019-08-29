@@ -30,7 +30,7 @@ public class Test {
 
         int num = 19522579;
         int price = 220;
-        int result = 0;
+        long result = 0;
         for (int i = 0; i < num; i++) {
             result += price;
         }
