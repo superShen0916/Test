@@ -36,4 +36,9 @@ public class BtraceTest {
         println(heapUsage());
     }
 
+    //    @OnMethod(clazz = "test.btrace.Calculator", method = "add", location = @Location(Kind.RETURN))
+    //    public static void trace1(int a, int b, @Return int sum, @Duration long duration) {
+    //        println("trace1:a=" + a + ",b=" + b + ",sum=" + sum + ",duration=" + duration);
+    //    }
+
 }
