@@ -7,6 +7,7 @@ package integer;
  */
 public class CacheOfInteger {
 
+    //+1
     /**
      * Integer会缓存-127到128之间的值，Integer.valueOf()返回的可能是缓存值
      *
