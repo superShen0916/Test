@@ -13,6 +13,6 @@ public class Connection implements AutoCloseable {
 
     @Override
     public void close() throws Exception {
-        System.out.println("close");
+        System.out.println("closeBoss");
     }
 }

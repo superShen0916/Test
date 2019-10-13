@@ -180,7 +180,7 @@ public class PlayerLostInfo2 {
             //                bw.write(player.toString());
             //                bw.flush();
             //            }
-            //            bw.close();
+            //            bw.closeBoss();
             System.out.println("done!!!");
         } catch (Exception e) {
             e.printStackTrace();

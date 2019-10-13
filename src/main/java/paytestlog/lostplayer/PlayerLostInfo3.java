@@ -103,21 +103,21 @@ public class PlayerLostInfo3 {
             }
             bw.close();
 
-//            BufferedWriter bw3 = new BufferedWriter(new FileWriter(path3));
-//            bw3.write("等级     数量+\n");
-//            for (int i = 0; i < 50; i++) {
-//                int count = 0;
-//                for (Map.Entry<String, Integer> entry : rid_level.entrySet()) {
-//                    if (entry.getValue() == i) {
-//                        count++;
-//                    }
-//                }
-//                if (count != 0) {
-//                    bw3.write(i + "   " + count + "\n");
-//                    bw3.flush();
-//                }
-//            }
-//            bw3.close();
+            //            BufferedWriter bw3 = new BufferedWriter(new FileWriter(path3));
+            //            bw3.write("等级     数量+\n");
+            //            for (int i = 0; i < 50; i++) {
+            //                int count = 0;
+            //                for (Map.Entry<String, Integer> entry : rid_level.entrySet()) {
+            //                    if (entry.getValue() == i) {
+            //                        count++;
+            //                    }
+            //                }
+            //                if (count != 0) {
+            //                    bw3.write(i + "   " + count + "\n");
+            //                    bw3.flush();
+            //                }
+            //            }
+            //            bw3.closeBoss();
             System.out.println("done!!!");
         } catch (Exception e) {
             e.printStackTrace();

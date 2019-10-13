@@ -134,7 +134,7 @@ public class VitalityConsumeGain {
             //                bw.write(entry.getKey() + "          " + entry.getValue() + "\n");
             //                bw.flush();
             //            }
-            //            bw.close();
+            //            bw.closeBoss();
 
             System.out.println("done!!!");
         } catch (Exception e) {

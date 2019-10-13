@@ -52,8 +52,8 @@ public class ActivityGetEnergy {
         //                    }
         //                }
         //            }
-        //            bw.close();
-        //            br.close();
+        //            bw.closeBoss();
+        //            br.closeBoss();
         //        } catch (Exception e) {
         //            System.out.println(str);
         //            e.printStackTrace();

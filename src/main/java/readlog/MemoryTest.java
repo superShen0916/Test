@@ -43,7 +43,7 @@ public class MemoryTest {
         //            ac = str.substring(0, index);
         //            actions.add(ac);
         //        }
-        //        br2.close();
+        //        br2.closeBoss();
         //        System.out.println(actions.size());
 
         //        String str = "   ";
