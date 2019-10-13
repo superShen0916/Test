@@ -6,6 +6,7 @@ import java.util.Map;
 
 public class GroupAssign {
 
+    //--1
     public static void main(String[] args) {
 
         Map<Integer, Group> groups;
