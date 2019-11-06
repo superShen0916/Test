@@ -10,6 +10,7 @@ import java.util.Set;
 
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
 
 /**
@@ -23,6 +24,23 @@ public class Test {
     //add 1
     //add 3
     public static void main(String[] args) {
+
+        Set<String> set1 = Sets.newHashSet();
+        Set<String> set2 = Sets.newTreeSet();
+        Set<String> set3 = Sets.newLinkedHashSet();
+        Map<String, String> map1 = Maps.newHashMap();
+        Map<String, String> mmm = Maps.newConcurrentMap();
+        //Map<String, String> map2 = Maps.newConcurrentMap();
+        //map2.put("1", "1");
+
+        String ss1 = "a";
+        String ss2 = new String("a");
+        System.out.println(ss1 == ss2);
+        System.out.println(ss1.equals(ss2));
+        System.out.println(ss1.hashCode() == ss2.hashCode());
+        set1.add(ss1);
+        set1.add(ss2);
+        System.out.println(set1.size());
 
         int x = 268435460;
         int y = 80 * x;
@@ -76,7 +94,6 @@ public class Test {
         //                Thread.sleep(1000);
         //
         //            } catch (InterruptedException e) {
-        //                // TODO Auto-generated catch block
         //                e.printStackTrace();
         //            }
         //        }

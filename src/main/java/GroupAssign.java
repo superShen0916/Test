@@ -1,10 +1,13 @@
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.google.common.collect.Maps;
+
 public class GroupAssign {
+
+    Map<String, String> map = Maps.newHashMap();
 
     //--1
     public static void main(String[] args) {
