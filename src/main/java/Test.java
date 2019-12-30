@@ -8,6 +8,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
@@ -24,6 +26,16 @@ public class Test {
     //add 1
     //add 3
     public static void main(String[] args) {
+
+        JSONArray jsonArray = new JSONArray();
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("1", "1");
+        jsonArray.add(jsonObject);
+        jsonObject.put("2", 2);
+        System.out.println(jsonArray.toString());//[{"1":"1","2":2}]
+
+        System.out.println(-16 >> 2);//-4
+        System.out.println(-16 >>> 2);//1073741820
 
         Set<String> set1 = Sets.newHashSet();
         Set<String> set2 = Sets.newTreeSet();

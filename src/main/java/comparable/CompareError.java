@@ -1,8 +1,8 @@
 package comparable;
 
-import java.util.*;
-
 import com.google.common.collect.Maps;
+
+import java.util.*;
 
 /**
  * @Description: 线上自定义comparable的一个报错
@@ -27,19 +27,35 @@ public class CompareError {
             public int compare(Map.Entry<String, Long> o1, Map.Entry<String, Long> o2) {
                 System.out.println(o2.getValue() + "  " + o1.getValue() + "   "
                         + (o2.getValue() - o1.getValue()));
+
+                //会报 Comparison method violates its general contract!
+                return (int) (o2.getValue() - o1.getValue());
+
+                //考虑比较对象为null的情况同样会报错
+                //                if (o1 == null || o2 == null) {
+                //                    return 0;
+                //                } else if (o2.getValue().equals(o1.getValue())) {
+                //                    return 0;
+                //                } else if (o2.getValue() > (o1.getValue())) {
+                //                    return  (int) (o2.getValue() - o1.getValue());
+                //                } else if (o2.getValue() < (o1.getValue())) {
+                //                    return  (int) (o2.getValue() - o1.getValue());
+                //                } else {
+                //                    return 0;
+                //                }
+
                 //返回0/1/-1就不会报错
-                if (o1 == null || o2 == null) {
-                    return 0;
-                } else if (o2.getValue().equals(o1.getValue())) {
-                    return 0;
-                } else if (o2.getValue() > (o1.getValue())) {
-                    return 1;
-                } else if (o2.getValue() < (o1.getValue())) {
-                    return -1;
-                } else {
-                    return 0;
-                }
-                //   return (int) (o2.getValue() - o1.getValue());
+                //                if (o1 == null || o2 == null) {
+                //                    return 0;
+                //                } else if (o2.getValue().equals(o1.getValue())) {
+                //                    return 0;
+                //                } else if (o2.getValue() > (o1.getValue())) {
+                //                    return 1;
+                //                } else if (o2.getValue() < (o1.getValue())) {
+                //                    return -1;
+                //                } else {
+                //                    return 0;
+                //                }
             }
         });
     }

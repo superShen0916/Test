@@ -1,5 +1,9 @@
 package comparable;
 
+import com.playcrab.common.leaderboard.lbs.ScoreLb;
+import com.playcrab.kos.common.leaderboard.Leaderboard;
+import com.playcrab.kos.gs.enums.LbType;
+
 /**
  * @Description: value class
  * @Author: shenpeng
@@ -23,6 +27,12 @@ public class Value implements Comparable<Value> {
         } else {
             return -1;
         }
+    }
+
+    public static void main(String[] args) {
+        ScoreLb hurtLb = Leaderboard.getInstance().getScoreLb(LbType.SPRING_BOSS);
+        hurtLb.getSize();
+
     }
 
     @Override
