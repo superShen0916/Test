@@ -9,6 +9,7 @@ import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
 
 public class MongoDBTJDBC {
+
     public static void main(String[] args) {
         try {
             // 连接到mongoDB服务
@@ -65,7 +66,6 @@ public class MongoDBTJDBC {
             }
 
         } catch (Exception e) {
-            // TODO Auto-generated catch block
             // System.err.println(e.getClass().getName() + ": " +
             // e.getMessage());
             e.printStackTrace();

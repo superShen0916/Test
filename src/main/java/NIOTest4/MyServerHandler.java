@@ -13,7 +13,7 @@ public class MyServerHandler extends IoHandlerAdapter {
 
     @Override
     public void messageReceived(IoSession session, Object message) throws Exception {
-        // 收到了上面解码后的消息
+        //收到了上面解码后的消息
         MyMessage msg = (MyMessage) message;
         if (message == null) {
             // TODO
@@ -24,6 +24,13 @@ public class MyServerHandler extends IoHandlerAdapter {
         System.out.println("服务端收到了一个信息");
 
         System.out.println(msg.getCommand() + "-----" + new String(msg.getContents()));
-        // session.write(msg);
+        session.write(msg);
     }
+
+    //    @Override
+    //    public void messageReceived(IoSession session, Object message) throws Exception {
+    //        System.out.println(message);
+    //        System.out.println(message.toString());
+    //todo 发消息的时候还是得装成Iobuffer...即加上编解码
+    //    }
 }
