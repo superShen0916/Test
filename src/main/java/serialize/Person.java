@@ -11,13 +11,16 @@ public class Person implements Serializable {
 
     private static final long serialVersionUID = 4531534556213008895L;
 
+    String[] arr;
+
     int age;
 
     String name;
 
-    public Person(int age, String name) {
+    public Person(int age, String name, String[] arr) {
         this.age = age;
         this.name = name;
+        this.arr = arr;
     }
 
     @Override
@@ -39,5 +42,13 @@ public class Person implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String[] getArr() {
+        return arr;
+    }
+
+    public void setArr(String[] arr) {
+        this.arr = arr;
     }
 }

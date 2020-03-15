@@ -14,10 +14,7 @@ public class TestProxy {
         //        proxy.save();
 
         IUserDao target = new UserDao();
-
         IUserDao proxy = (IUserDao) new ProxyFactory(target).getProxyInstance();
-
         proxy.save();
     }
-
 }

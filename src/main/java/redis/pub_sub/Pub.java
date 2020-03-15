@@ -14,5 +14,6 @@ public class Pub {
 
         Jedis jedis = RedisManager.getClient();
         jedis.publish("hello_redis", "hello redis");
+        jedis.publish("hello_redis", "hello redis2");
     }
 }
