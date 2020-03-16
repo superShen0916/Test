@@ -30,8 +30,6 @@ class Head implements Cloneable {
 
 public class Person implements Cloneable {
 
-    private static final long serialVersionUID = 120904406677219163L;
-
     Head head;
 
     public Person() {
