@@ -1,5 +1,7 @@
 package integer;
 
+import java.util.concurrent.ThreadLocalRandom;
+
 /**
  * @Description: Integer的缓存
  * @Author: shenpeng
@@ -24,6 +26,7 @@ public class CacheOfInteger {
         Integer c = Integer.valueOf(129);
         Integer d = Integer.valueOf(129);
         System.out.println(c == d); //false
+
     }
 
 }

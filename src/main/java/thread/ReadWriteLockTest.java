@@ -1,5 +1,7 @@
 package thread;
 
+import java.util.Random;
+import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 /**
@@ -7,7 +9,7 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
  * @Author: shenpeng
  * @Date: 2020-03-19
  */
-public class ReadWriteLock {
+public class ReadWriteLockTest {
 
     public static void main(String[] args) {
         ReadWriteLockDemo rwd = new ReadWriteLockDemo();
@@ -17,16 +19,18 @@ public class ReadWriteLock {
 
                 @Override
                 public void run() {
+
                     rwd.get();
                 }
             }).start();
         }
+
         //写线程
         new Thread(new Runnable() {
 
             @Override
             public void run() {
-                rwd.set((int) (Math.random() * 101));
+                rwd.set((int) (101));
             }
         }, "Write").start();
     }
@@ -38,14 +42,19 @@ class ReadWriteLockDemo {
     private int number = 0;
 
     // 实际实现类--ReentrantReadWriteLock，默认非公平模式
-    private ReadWriteLock readWriteLock = new ReentrantReadWriteLock();
+    ReadWriteLock readWriteLock = new ReentrantReadWriteLock();
 
     //读
     public void get() {
         //使用读锁
         readWriteLock.readLock().lock();
         try {
+
+            Thread.sleep(new Random().nextInt(1000));
             System.out.println(Thread.currentThread().getName() + " : " + number);
+
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         } finally {
             readWriteLock.readLock().unlock();
         }

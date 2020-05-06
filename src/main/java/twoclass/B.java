@@ -5,10 +5,14 @@ package twoclass;
  * @Author: shenpeng
  * @Date: 2018/11/13
  */
-public class B {
+public class B extends A {
 
-    public static void main(String[] args) {
-        A.print();
-        System.out.println(A.s);
+    public static void print() {
+        System.out.println(" - - B- ");
+    }
+
+    @Override
+    public void print2() {
+        System.out.println("b2");
     }
 }

@@ -34,15 +34,18 @@ public class CompareError {
                 //考虑比较对象为null的情况同样会报错
                 //                if (o1 == null || o2 == null) {
                 //                    return 0;
-                //                } else if (o2.getValue().equals(o1.getValue())) {
-                //                    return 0;
-                //                } else if (o2.getValue() > (o1.getValue())) {
-                //                    return  (int) (o2.getValue() - o1.getValue());
-                //                } else if (o2.getValue() < (o1.getValue())) {
-                //                    return  (int) (o2.getValue() - o1.getValue());
                 //                } else {
-                //                    return 0;
+                //                    return (int) (o2.getValue() - o1.getValue());
                 //                }
+                //                //                                } else if (o2.getValue().equals(o1.getValue())) {
+                //                //                                    return 0;
+                //                //                                } else if (o2.getValue() > (o1.getValue())) {
+                //                //                                    return  (int) (o2.getValue() - o1.getValue());
+                //                //                                } else if (o2.getValue() < (o1.getValue())) {
+                //                //                                    return  (int) (o2.getValue() - o1.getValue());
+                //                //                                } else {
+                //                //                                    return 0;
+                //                //                                }
 
                 //返回0/1/-1就不会报错
                 //                if (o1 == null || o2 == null) {

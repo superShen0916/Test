@@ -13,7 +13,9 @@ public class Pub {
         RedisManager.init(1000, 1000, 1000, "127.0.0.1", 6379, "", 1);
 
         Jedis jedis = RedisManager.getClient();
+
         jedis.publish("hello_redis", "hello redis");
         jedis.publish("hello_redis", "hello redis2");
     }
+
 }

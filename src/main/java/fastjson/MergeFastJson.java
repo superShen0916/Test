@@ -1,8 +1,8 @@
 package fastjson;
 
-import java.util.Iterator;
-
 import com.alibaba.fastjson.JSONObject;
+
+import java.util.*;
 
 /**
  * @Description: 合并json对象
@@ -12,7 +12,20 @@ import com.alibaba.fastjson.JSONObject;
 public class MergeFastJson {
 
     public static void main(String[] args) {
+        Set<Integer> set = new HashSet<>();
+        set.add(1);
+        set.add(15);
+        set.add(16);
+        set.add(17);
+        set.add(32);
+        System.out.println(set.toString());
 
+        Map<String, String> hashMap = new HashMap<>();
+        Map<String, String> hashTable = new Hashtable<>();
+        hashMap.put(null, "s");
+        System.out.println(hashMap.size());
+        System.out.println(hashMap.get(null));
+        hashTable.put(null, "2");
     }
 
     public JSONObject mergeJson(JSONObject oldJson, JSONObject newJson) {

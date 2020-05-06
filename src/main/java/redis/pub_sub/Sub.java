@@ -15,7 +15,7 @@ public class Sub {
         Jedis jedis = RedisManager.getClient();
 
         jedis.psubscribe(listener, "hello*");
-        System.out.println(111);
+        System.out.println(111); //这里不会输出,因为上一步会阻塞
     }
 
 }

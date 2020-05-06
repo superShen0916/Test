@@ -1,10 +1,10 @@
 package thread;
 
-import java.util.List;
-import java.util.concurrent.Callable;
-
 import com.google.common.collect.Lists;
 import com.playcrab.kos.common.utils.KOSTimeUtils;
+
+import java.util.List;
+import java.util.concurrent.Callable;
 
 /**
  * @Description: 测试两个syncronized方法操作同一个对象会不会有并发问题
@@ -34,7 +34,8 @@ public class SynchronizedMethod {
             public void run() {
                 while (true) {
                     try {
-                        forLoop();
+
+                        new SynchronizedMethod().remove();
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
@@ -47,7 +48,7 @@ public class SynchronizedMethod {
             public void run() {
                 while (true) {
                     try {
-                        remove();
+                        new SynchronizedMethod().remove();
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
@@ -56,19 +57,21 @@ public class SynchronizedMethod {
         }).start();
     }
 
-    public static synchronized void remove() throws InterruptedException {
-        System.out.println("remove start");
-        list.remove(0);
+    public synchronized void remove() throws InterruptedException {
+        System.out.println(Thread.currentThread().getName() + " remove start");
+        //  list.remove(0);
         list.add(String.valueOf(KOSTimeUtils.getCurrentMills()));
+        Thread.sleep(5000);
         list.add(String.valueOf(KOSTimeUtils.getCurrentMills()));
         Thread.sleep(100);
-        System.out.println("remove end");
+        System.out.println(Thread.currentThread().getName() + " remove end");
     }
 
-    public static synchronized void forLoop() throws InterruptedException {
+    public synchronized void forLoop() throws InterruptedException {
+        System.out.println(list.size());
         for (String s : list) {
-            Thread.sleep(100);
             System.out.println(" loop   " + s);
+            Thread.sleep(1000);
         }
     }
 

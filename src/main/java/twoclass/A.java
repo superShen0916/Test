@@ -16,4 +16,8 @@ public class A {
     public static void print() {
         System.out.println(" - - - ");
     }
+
+    public void print2() {
+        System.out.println("a2");
+    }
 }

@@ -1,5 +1,9 @@
 package readlog;
 
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
+
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -9,10 +13,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.*;
-
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
 
 /**
  * @Description: 各种玩法参与人数
@@ -203,7 +203,7 @@ public class PartakeCount {
         System.out.println("2");
         for (FutureTask task : futureTasks) {
             Object object = task.get();
-            Map<Integer, Set<String>> result = (Map<Integer, Set<String>>) object;
+            //  Map<Integer, Set<String>> result = (Map<Integer, Set<String>>) object;
             //            System.out.println(result.get(100));
             //            for (Map.Entry<Integer, Set<String>> entry : result.entrySet()) {
             //                if (entry.getKey() != 100) {

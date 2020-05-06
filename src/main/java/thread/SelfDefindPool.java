@@ -1,8 +1,8 @@
 package thread;
 
-import java.util.concurrent.*;
-
 import com.alipay.remoting.NamedThreadFactory;
+
+import java.util.concurrent.*;
 
 /**
  * @Description: 自定义线程池
@@ -38,9 +38,9 @@ public class SelfDefindPool {
         /**
          * scheduledThreadPool
          */
-        ExecutorService scheduledThreadPool = new ThreadPoolExecutor(cpuNum + 1, Integer.MAX_VALUE,
-                0, TimeUnit.NANOSECONDS, new DelayQueue(),
-                new NamedThreadFactory("ScheduledThread"), new ThreadPoolExecutor.AbortPolicy());
+        //        ExecutorService scheduledThreadPool = new ThreadPoolExecutor(cpuNum + 1, Integer.MAX_VALUE,
+        //                0, TimeUnit.NANOSECONDS, new ScheduledThreadPoolExecutor.DelayedWorkQueue(),
+        //                new NamedThreadFactory("ScheduledThread"), new ThreadPoolExecutor.AbortPolicy());
 
         ScheduledThreadPoolExecutor scheduledExecutorService = new ScheduledThreadPoolExecutor(2,
                 new NamedThreadFactory("schedule"), new ThreadPoolExecutor.AbortPolicy());
@@ -55,16 +55,17 @@ public class SelfDefindPool {
          */
         //scheduledExecutorService.scheduleWithFixedDelay(task, 3, 4, TimeUnit.SECONDS);
         try {
-        //    scheduledExecutorService.scheduleWithFixedDelay(task, 1, 1, TimeUnit.SECONDS);
+            //    scheduledExecutorService.scheduleWithFixedDelay(task, 1, 1, TimeUnit.SECONDS);
 
         } catch (Exception e) {
             System.out.println(11);
         }
 
-//        Future future =  cachedThreadPool.submit(task);
-//        future.get();
+        //        Future future =  cachedThreadPool.submit(task);
+        //        future.get();
 
-        ExecutorService threadPool = new TraceThreadPoolExecutor(2, 2, 1, TimeUnit.SECONDS,new LinkedBlockingDeque<>(),new NamedThreadFactory("myThreadPool"));
+        ExecutorService threadPool = new TraceThreadPoolExecutor(2, 2, 1, TimeUnit.SECONDS,
+                new LinkedBlockingDeque<>(), new NamedThreadFactory("myThreadPool"));
         threadPool.submit(task);
     }
 
@@ -83,19 +84,19 @@ public class SelfDefindPool {
 
             System.out.println("---");
             System.out.println(1 / 0);
-//            try {
-//            System.out.println(1 / 0);
-//            }catch (Exception e){
-//                System.out.println("error");
-//               // e.printStackTrace();
-//                throw e;
-//            }
+            //            try {
+            //            System.out.println(1 / 0);
+            //            }catch (Exception e){
+            //                System.out.println("error");
+            //               // e.printStackTrace();
+            //                throw e;
+            //            }
             System.out.println(Thread.currentThread().getName());
 
         }
     }
 
-    static class TraceThreadPoolExecutor extends ThreadPoolExecutor{
+    static class TraceThreadPoolExecutor extends ThreadPoolExecutor {
 
         public TraceThreadPoolExecutor(int corePoolSize, int maximumPoolSize, long keepAliveTime,
                 TimeUnit unit, BlockingQueue<Runnable> workQueue, ThreadFactory threadFactory) {
@@ -104,26 +105,26 @@ public class SelfDefindPool {
 
         @Override
         public void execute(Runnable command) {
-            super.execute(wrap(command,clientTrace()));
+            super.execute(wrap(command, clientTrace()));
         }
 
         @Override
-        public  Future<?> submit(Runnable task) {
-            return super.submit(wrap(task,clientTrace()));
+        public Future<?> submit(Runnable task) {
+            return super.submit(wrap(task, clientTrace()));
         }
 
-        private Exception clientTrace(){
+        private Exception clientTrace() {
             return new Exception("Client stack trace");
         }
 
-        private Runnable wrap(final Runnable task,final Exception clientStack){
+        private Runnable wrap(final Runnable task, final Exception clientStack) {
             return new Runnable() {
 
                 @Override
                 public void run() {
                     try {
                         task.run();
-                    }catch (Exception e){
+                    } catch (Exception e) {
                         clientStack.printStackTrace();
                         throw e;
                     }
