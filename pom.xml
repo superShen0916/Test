@@ -10,6 +10,8 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
+
+
     <dependencies>
         <dependency>
             <groupId>org.codehaus.jackson</groupId>
@@ -179,8 +181,10 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+
                 <version>3.2</version>
                 <configuration>
+                    <compilerArgument>-Xlint:unchecked</compilerArgument>
                     <source>1.8</source>
                     <target>1.8</target>
                 </configuration>
@@ -191,6 +195,23 @@
                 <artifactId>exec-maven-plugin</artifactId>
                 <version>1.6.0</version>
             </plugin>
+
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <configuration>
+                    <archive>
+                        <manifestFile>src/META-INF/MANIFEST.MF</manifestFile>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                            <classpathPrefix>lib/</classpathPrefix>
+                            <mainClass>hotswap.Handler</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+
 
         </plugins>
     </build>
