@@ -25,6 +25,8 @@ import java.util.concurrent.Callable;
  *               | class对象 | 类对象 |synchronized (RatedArena.class){...}
  *               | 任意实例对象obj | 实例对象obj | String s = "";<br>
  *               synchronized (s){...} |
+ * 
+ *               //test
  * @Author: shenpeng
  * @Date: 2019-09-04
  */
