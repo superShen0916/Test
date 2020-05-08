@@ -11,6 +11,12 @@ import java.util.concurrent.Callable;
  *               结论：当synchronized的是static方法时不会，锁的是类对象
  *               非静态方法时，锁的是类对象
  * 
+ *               也就是，对于非静态方法，如果是同一个synchronizedMethod对象调用，因为同一个对象只有一个mointor，所以回产生锁竞争，没有并发问题。
+ *               如果是不同对象，比如在调用的时候 new
+ *               SynchronizedMethod().remove();这种会有并发问题。
+ *               如果又一个方法没有被synchronized修饰，那它就不需要获取monitor锁，会有并发问题。
+ * 
+ * 
  *               | 修饰的目标 | 实际锁住的对象 | 伪代码 |
  *               | ---- | --- | --- |
  *               | 实例方法 | 类的实例对象 |public synchronized void remove(){... }
@@ -27,6 +33,8 @@ public class SynchronizedMethod {
     static List<String> list = Lists.newArrayList();
 
     public static void main(String[] args) {
+        SynchronizedMethod synchronizedMethod = new SynchronizedMethod();
+
         list.add(String.valueOf(KOSTimeUtils.getCurrentMills()));
         new Thread(new Runnable() {
 
@@ -34,8 +42,8 @@ public class SynchronizedMethod {
             public void run() {
                 while (true) {
                     try {
-
-                        new SynchronizedMethod().remove();
+                        //                        new SynchronizedMethod().remove();
+                        synchronizedMethod.remove();
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
@@ -48,7 +56,8 @@ public class SynchronizedMethod {
             public void run() {
                 while (true) {
                     try {
-                        new SynchronizedMethod().remove();
+                        //                        new SynchronizedMethod().forLoop();
+                        synchronizedMethod.forLoop();
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
@@ -59,8 +68,8 @@ public class SynchronizedMethod {
 
     public synchronized void remove() throws InterruptedException {
         System.out.println(Thread.currentThread().getName() + " remove start");
-        //  list.remove(0);
-        list.add(String.valueOf(KOSTimeUtils.getCurrentMills()));
+        list.remove(0);
+        // list.add(String.valueOf(KOSTimeUtils.getCurrentMills()));
         Thread.sleep(5000);
         list.add(String.valueOf(KOSTimeUtils.getCurrentMills()));
         Thread.sleep(100);
