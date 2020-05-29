@@ -111,6 +111,7 @@ public class SelfDefindPool {
         @Override
         public Future<?> submit(Runnable task) {
             return super.submit(wrap(task, clientTrace()));
+
         }
 
         private Exception clientTrace() {
