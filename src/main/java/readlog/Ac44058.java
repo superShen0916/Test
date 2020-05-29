@@ -1,9 +1,9 @@
 package readlog;
 
+import com.google.common.collect.Maps;
+
 import java.io.*;
 import java.util.Map;
-
-import com.google.common.collect.Maps;
 
 /**
  * @Description:
@@ -12,7 +12,8 @@ import com.google.common.collect.Maps;
  */
 public class Ac44058 {
 
-    private static String path = "/Volumes/macwin/action日志/action_log_2018-12-02.log";
+    //new1 1
+    private static String path = "/Volumes/macwin/action日志/action_log_2018-12-02.log";//new1 2
 
     private static String path2 = "/Users/playcrab/Desktop/log/Test_ac";
 
