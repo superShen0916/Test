@@ -12,8 +12,13 @@ import java.util.Map;
  */
 public class Ac44058 {
 
-    //new1 1
-    private static String path = "/Volumes/macwin/action日志/action_log_2018-12-02.log";//new1 2
+    //    //new1 1
+    //    private static String path = "/Volumes/macwin/action日志/action_log_2018-12-02.log";//new1 2
+    //=======
+    //new2 1
+    private static String path = "/Volumes/macwin/action日志/action_log_2018-12-02.log";
+    //new2 2
+    //>>>>>>> new 2 add
 
     private static String path2 = "/Users/playcrab/Desktop/log/Test_ac";
 
