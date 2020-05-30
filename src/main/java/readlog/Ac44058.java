@@ -12,7 +12,6 @@ import java.util.Map;
  */
 public class Ac44058 {
 
-    //<<<<<<< HEAD
     //    //new1 1
     //    private static String path = "/Volumes/macwin/action日志/action_log_2018-12-02.log";//new1 2
     //=======
