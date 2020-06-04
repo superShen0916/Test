@@ -7,6 +7,8 @@ package hotswap;
  */
 public class Service {
 
+    int num;
+
     /**
      * 打印方法，热更测试用
      * 
@@ -15,9 +17,16 @@ public class Service {
      * @Author: shenpeng
      * @Date: 2020-05-06
      */
-    public static void print() {
-        // System.out.println("origin");
-        System.out.println("hotfixed");
+    public void print() {
+        //  System.out.println("origin" + num);
+        System.out.println("hotfixed" + num);
     }
 
+    public int getNum() {
+        return num;
+    }
+
+    public void setNum(int num) {
+        this.num = num;
+    }
 }
