@@ -14,12 +14,14 @@ public class Handler {
 
     public static void main(String[] args) {
 
+        Service service = new Service();
+        service.setNum(2);
         ThreadPoolExecutor threadPoolExecutor = new ScheduledThreadPoolExecutor(1);
         ((ScheduledThreadPoolExecutor) threadPoolExecutor).scheduleAtFixedRate(new Runnable() {
 
             @Override
             public void run() {
-                Service.print();
+                service.print();
             }
         }, 30, 5, TimeUnit.SECONDS);
 

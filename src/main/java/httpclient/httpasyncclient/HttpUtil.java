@@ -152,7 +152,7 @@ public class HttpUtil {
                     .setConnectTimeout(HttpUtil.socketTimeout).setSoTimeout(HttpUtil.connectTimeout)
                     .setRcvBufSize(8192).setSndBufSize(8192).build();
 
-            // 设置连接池大小
+            // 设置连接池大小设置连接池大小
             ConnectingIOReactor ioReactor = new DefaultConnectingIOReactor(ioReactorConfig);
 
             PoolingNHttpClientConnectionManager connManager = new PoolingNHttpClientConnectionManager(
