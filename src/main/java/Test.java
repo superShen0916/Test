@@ -14,13 +14,14 @@ import java.util.Set;
  */
 public class Test {
 
+    //a1 e3
+    //a2
+    //a3
+
     public static void main(String[] args) {
 
         TestData data = new TestData("male");
         data.setName("lily");
-
-        //3
-        //      2
 
         // Player player = PlayerService.loadPlayerByUId(10033);
         ImmutableList<String> immutableList = ImmutableList.of("a", "b");
