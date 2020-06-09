@@ -14,10 +14,9 @@ import java.util.Set;
  */
 public class Test {
 
-    //A
-    //c1
+    //c
+    //B
 
-    //a
     public static void main(String[] args) {
 
         TestData data = new TestData("male");
@@ -72,6 +71,4 @@ public class Test {
         //        data = JSONObject.parseObject(s, TestData.class);
         //        System.out.println(data.gender + " " + data.name); //male null
     }
-
-    //a2
 }
