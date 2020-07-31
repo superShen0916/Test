@@ -1,5 +1,8 @@
 package thread;
 
+import java.util.concurrent.locks.Condition;
+import java.util.concurrent.locks.ReentrantLock;
+
 /**
  * @Description: wait 和 notify
  * @Author: shenpeng
@@ -10,6 +13,8 @@ public class WaitNotify {
     public static void main(String[] args) throws InterruptedException {
         WaitNotify waitNotify = new WaitNotify();
 
+        Condition condition = new ReentrantLock().newCondition();
+
         Thread thread1 = new Thread() {
 
             @Override
@@ -17,7 +22,9 @@ public class WaitNotify {
                 System.out.println(1);
                 try {
                     synchronized (waitNotify) {
-                        waitNotify.wait();
+                        while (System.currentTimeMillis() < 1) {
+                            waitNotify.wait();
+                        }
                     }
                     System.out.println(3);
                 } catch (InterruptedException e) {
@@ -52,7 +59,9 @@ public class WaitNotify {
         }
         System.out.println("notify 1");
         Thread.sleep(5000);
-        waitNotify.notify();
+        synchronized (waitNotify) {
+            waitNotify.notify();
+        }
     }
 
 }
